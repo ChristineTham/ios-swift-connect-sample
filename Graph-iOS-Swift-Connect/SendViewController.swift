@@ -89,7 +89,7 @@ class SendViewController: UIViewController {
         self.title = NSLocalizedString("Microsoft Graph Connect", comment: "")
         self.disconnectButton.title = NSLocalizedString("DISCONNECT", comment: "")
         self.descriptionLabel.text = "You're now connected to Microsoft Graph. Tap the button below to send a message from your account using the Microsoft Graph API."
-        self.sendButton.setTitle(NSLocalizedString("SEND", comment: ""), for: UIControlState())
+        self.sendButton.setTitle(NSLocalizedString("SEND", comment: ""), for: UIControl.State())
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -189,7 +189,8 @@ extension SendViewController {
         guard let unwrappedImage = image else {
             return
         }
-        let data = UIImageJPEGRepresentation(unwrappedImage, 1.0)
+        // let data = UIImageJPEGRepresentation(unwrappedImage, 1.0)
+        let data = unwrappedImage.jpegData(compressionQuality: 1.0)
         self.graphClient
             .me()
             .drive()
@@ -280,7 +281,7 @@ extension SendViewController {
 
         if let unwrappedImage = self.userPicture {
             let fileAttachment = MSGraphFileAttachment()
-            let data = UIImageJPEGRepresentation(unwrappedImage, 1.0)
+            let data = unwrappedImage.jpegData(compressionQuality: 1.0)
             fileAttachment.contentType = "image/png"
             fileAttachment.oDataType = "#microsoft.graph.fileAttachment"
             fileAttachment.contentBytes = data?.base64EncodedString()

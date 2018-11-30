@@ -18,7 +18,7 @@ class ConnectViewController: UIViewController {
         super.viewDidLoad()
         
         title = NSLocalizedString("Microsoft Graph Connect", comment: "")
-        connectButton.setTitle(NSLocalizedString("CONNECT", comment: ""), for: UIControlState())
+        connectButton.setTitle(NSLocalizedString("CONNECT", comment: ""), for: UIControl.State())
     }
     
 
@@ -71,12 +71,12 @@ private extension ConnectViewController {
     func loadingUI(show: Bool) {
         if show {
             self.activityIndicator.startAnimating()
-            self.connectButton.setTitle(NSLocalizedString("CONNECTING", comment: ""), for: UIControlState())
+            self.connectButton.setTitle(NSLocalizedString("CONNECTING", comment: ""), for: UIControl.State())
             self.connectButton.isEnabled = false;
         }
         else {
             self.activityIndicator.stopAnimating()
-            self.connectButton.setTitle(NSLocalizedString("CONNECT", comment: ""), for: UIControlState())
+            self.connectButton.setTitle(NSLocalizedString("CONNECT", comment: ""), for: UIControl.State())
             self.connectButton.isEnabled = true;
         }
     }
